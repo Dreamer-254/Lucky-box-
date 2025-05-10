@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location Tracker</title>
+    <script>
+        function getLocationAndRedirect() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const lat = position.coords.latitude;
+                        const lon = position.coords.longitude;
+
+                        // Redirect with location data
+                        window.location.href = https://postman-echo.com/get?lat=${lat}&lon=${lon};
+                    },
+                    (error) => {
+                        alert("Unable to get location: " + error.message);
+                    }
+                );
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+    </script>
+</head>
+<body onload="getLocationAndRedirect()">
+    <h1>Tracking...</h1>
+    <p>If nothing happens, please enable location services on your device.</p>
+</body>
+</html>
